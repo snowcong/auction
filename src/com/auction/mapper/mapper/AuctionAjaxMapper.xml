@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.auction.mapper.mapper.AuctionAjaxMapper">
+	
+	<update id = "updateBook"  parameterType = "com.auction.pojo.AuctionBookDO">
+		update auction_book set 
+		buyerId = #{book.buyerId} , price = #{book.price}
+		where id = #{book.id}   	
+	</update>
+	
+	<update id = "updatePainting"  parameterType = "com.auction.pojo.AuctionPaintingDO">
+		update auction_painting set 
+		buyerId = #{painting.buyerId} , price = #{painting.price} 
+		where id = #{painting.id}
+	</update>
+	
+	<update id = "updateChinaWare"  parameterType = "com.auction.pojo.AuctionChinaWareDO">
+		update auction_chinaWare set 
+		buyerId = #{chinaWare.buyerId} , price = #{chinaWare.price} 
+		where id = #{chinaWare.id}
+	</update>
+	
+	<update id = "updateJadeWare"  parameterType = "com.auction.pojo.AuctionJadeWareDO">
+		update auction_jadeWare set 
+		buyerId = #{jadeWare.buyerId} , price = #{jadeWare.price} 
+		where id = #{jadeWare.id}
+	</update>
+	
+	<update id = "updateLiquor"  parameterType = "com.auction.pojo.AuctionLiquorDO">
+		update auction_liquor set 
+		buyerId = #{liquor.buyerId} , price = #{liquor.price} 
+		where id = #{liquor.id}
+	</update>
+	
+	<update id = "updateRecommend"  parameterType = "com.auction.pojo.AuctionRecommendDO">
+		update recommend set 
+		buyerId = #{recommend.buyerId} , price = #{recommend.price} 
+		where id = #{recommend.id}
+	</update>
+</mapper>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.auction.mapper.mapper.CommodityHistoryMapper">
+
+    <resultMap id = "ch" type= "com.auction.pojo.CommodityHistoryDO">
+	   <id column = "id" property = "id"/>
+	   <result column = "price" property = "price"/>
+	   <result column = "name" property = "name"/>
+	   <result column = "introduce" property = "introduce"/>
+	   <result column = "number" property = "number"/>
+	   <result column = "flag" property = "flag"/>
+	   <result column = "level" property = "level"/>
+	   <result column = "salerId" property = "salerId"/>
+	   <result column = "imgUrl" property = "imgUrl"/>
+	   <result column = "img" property = "img"/>
+	   <result column = "buyerId" property = "buyerId"/>
+	   <result column = "time" property = "time"/>
+	   <result column = "commdityId" property = "commdityId"/>
+	   <result column = "sum" property = "sum"/>
+	</resultMap>
+	
+	<insert id="insert" parameterType="com.auction.pojo.CommodityHistoryDO" >
+		insert into commodityhistory(id,name,price,introduce,number,flag,level,imgUrl,img,buyerId,time,commodityId,sum)
+		values(null,#{c.name},#{c.price},#{c.introduce},#{c.number},#{c.flag},#{c.level},#{c.imgUrl},#{c.img},#{c.buyerId},#{c.time},#{c.commodityId},#{c.sum}) 
+	</insert>
+	
+	<select id ="getList" resultMap="ch">
+	    select * from commodityhistory 
+	    where buyerId = #{id}
+	</select>
+</mapper>

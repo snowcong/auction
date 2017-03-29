@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.auction.mapper.mapper.BuyerMapper">
+	
+	<sql id="all_columns">
+		id,buyerName,password,imgUrl
+	</sql>
+	
+	<sql id="where">
+		<where>
+			<if test="buyerName != null">
+				and buyerName = #{buyer.buyerName}
+			</if>
+			<if test="password != null">
+				and password = #{buyer.password}
+			</if>
+		</where>
+	</sql>
+	
+	<select id="loginVerify" parameterType="com.auction.pojo.BuyerDO" resultType="com.auction.pojo.BuyerDO">
+		select
+		*
+		from buyer where buyerName = #{buyer.buyerName} and password = #{buyer.password}
+	</select>
+	
+	<update id = "updateCom" parameterType = "String" >
+	    update buyer set commodity=#{com} where buyName=#{buyerName} 
+	</update>
+	
+	<select id = "getImg" parameterType = "int" resultType = "String">
+	    select imgUrl from buyer where id = #{id}
+	</select>
+	
+	<update id = "updatePas" parameterType = "com.auction.pojo.BuyerDO">
+	    update buyer set password=#{buyer.password} where id=#{buyer.id}
+	</update>
+</mapper>

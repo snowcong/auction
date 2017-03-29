@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.auction.mapper.mapper.CommodityMapper">
+
+    <resultMap id = "commodity" type= "com.auction.pojo.CommodityDO">
+	   <id column = "id" property = "id"/>
+	   <result column = "price" property = "price"/>
+	   <result column = "name" property = "name"/>
+	   <result column = "introduce" property = "introduce"/>
+	   <result column = "number" property = "number"/>
+	   <result column = "flag" property = "flag"/>
+	   <result column = "level" property = "level"/>
+	   <result column = "beginTime" property = "beginTime"/>
+	   <result column = "endTime" property = "endTime"/>
+	   <result column = "img" property = "img"/>
+	</resultMap>
+ 	
+	 <resultMap id = "comment" type= "com.auction.pojo.CommentDO">
+	   <id column = "id" property = "id"/>
+	   <result column = "commodityId" property = "commodityId"/>
+	   <result column = "bad" property = "bad"/>
+	   <result column = "good" property = "good"/>
+	   <result column = "content" property = "content"/>
+	</resultMap>
+	
+	<select id="getCommodityParticulars" parameterType="Integer" resultType="com.auction.pojo.CommodityDO">
+		select
+		*
+		from commodity where id = #{cid} 
+	</select>
+	
+	<select id="getSaler" parameterType="Integer" resultType="com.auction.pojo.SalerDO">
+		select
+		*
+		from saler where id = #{cid} 
+	</select>
+	
+	<select id="getComment" parameterType="Integer" resultMap="comment">
+		select
+		*
+		from comment where commodityId = #{cid} 
+	</select>
+	
+	<select id="getSearch" parameterType="String" resultMap="commodity">
+		select
+		*
+		from commodity where  number > 0 and name like "%"#{search}"%"
+	</select>
+	
+	<select id = "getSport" resultType="com.auction.pojo.SportCommodityDO">
+	    select 
+	    *
+	    from sportcommodity where number > 0 order by level desc limit #{begin},#{number}
+	</select>
+	
+	<select id = "getLife" resultType="com.auction.pojo.LifeCommodityDO">
+	    select 
+	    *
+	    from lifecommodity where number > 0 order by level desc limit #{begin},#{number}
+	</select>
+	
+	<select id = "getOthers" resultType="com.auction.pojo.OthersCommodityDO">
+	    select 
+	    *
+	    from otherscommodity where number > 0 order by level desc limit #{begin},#{number}
+	</select>
+	
+	<select id = "getEntertainment" resultType="com.auction.pojo.EntertainmentCommodityDO">
+	    select 
+	    *
+	    from entertainmentcommodity where number > 0 order by level desc limit #{begin},#{number}
+	</select>
+	
+	<select id = "getNews" resultType="com.auction.pojo.CommodityNewDO">
+	    select 
+	    *
+	    from commoditynew where number > 0 order by level desc limit #{begin},#{number}
+	</select>
+	
+	<select id = "getRecommend" resultType="com.auction.pojo.CommodityRecommendDO">
+	    select 
+	    *
+	    from commodityrecommend where number > 0 order by level desc limit #{begin},#{number}
+	</select>
+	
+	<select id = "getEnterNum" resultType = "int">
+	    select 
+	    count(*)
+	    from entertainmentcommodity
+	</select>
+	
+	<select id = "getId" resultType = "int">
+	    select 
+	    count(*)
+	    from commodity
+	</select>
+	
+	<insert id = "insert" parameterType = "com.auction.pojo.CommodityDO">
+	    insert into commodity(id,name,price,number,introduce,img,imgUrl) values(null,#{commodity.name},#{commodity.price},#{commodity.number},#{commodity.introduce},#{commodity.img},#{commodity.imgUrl})
+	</insert>
+	
+	<insert id = "insertS" parameterType = "com.auction.pojo.SportCommodityDO">
+	    insert into sportcommodity(id,name,price,number,introduce,img,imgUrl,commodityId) values(null,#{commodity.name},#{commodity.price},#{commodity.number},#{commodity.introduce},#{commodity.img},#{commodity.imgUrl},#{commodity.commodityId})
+	</insert>
+	
+	<insert id = "insertE" parameterType = "com.auction.pojo.EntertainmentCommodityDO">
+	    insert into entertainmentcommodity(id,name,price,number,introduce,img,imgUrl) values(null,#{commodity.name},#{commodity.price},#{commodity.number},#{commodity.introduce},#{commodity.img},#{commodity.imgUrl},#{commodity.commodityId})
+	</insert>
+	
+	<insert id = "insertL" parameterType = "com.auction.pojo.LifeCommodityDO">
+	    insert into lifecommodity(id,name,price,number,introduce,img,imgUrl) values(null,#{commodity.name},#{commodity.price},#{commodity.number},#{commodity.introduce},#{commodity.img},#{commodity.imgUrl},#{commodity.commodityId})
+	</insert>
+	
+	<insert id = "insertO" parameterType = "com.auction.pojo.OthersCommodityDO">
+	    insert into otherscommodity(id,name,price,number,introduce,img,imgUrl) values(null,#{commodity.name},#{commodity.price},#{commodity.number},#{commodity.introduce},#{commodity.img},#{commodity.imgUrl},#{commodity.commodityId})
+	</insert>
+</mapper>

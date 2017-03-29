@@ -1,0 +1,48 @@
+.header{
+	width: 1000px;
+	margin: 0 auto;
+	height: 50px;
+	border-bottom: 2px solid #000;
+}
+.header .logo {
+	float: left;
+	width: 50px;
+	height: 50px;
+}
+.header .title {
+	display: inline-block;
+	padding: 15px 20px;
+	font-weight: 100;
+	font-size: 22px;
+	color: #000;
+}
+
+.container {
+	width: 1000px;
+	margin: 0 auto;
+}
+.container .sku {
+	width: 220px;
+	height: 300px;
+	float: left;
+	margin: 10px;
+	border: 1px solid #ccc;
+}
+.sku a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-decoration: none;
+	font-size: 16px;
+	color: #666;
+}
+.sku .show-img {
+	width: 100%;
+	height: 250px;
+}
+.sku .name {
+	width: 100%;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+}

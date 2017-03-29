@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.auction.mapper.mapper.AuctionInsertMapper">
+	<insert id = "b" parameterType = "com.auction.pojo.AuctionBookDO">
+	   insert into auction_book(id,name,price,salerId,endTime,lowPrice,imgUrl,type,introduce,img,author) values(null,#{b.name},#{b.price},#{b.salerId},#{b.endTime},#{b.lowPrice},#{b.imgUrl},#{b.type},#{b.introduce},#{b.img},#{b.author})
+	</insert>
+	
+	<insert id = "p" parameterType = "com.auction.pojo.AuctionPaintingDO">
+	   insert into auction_painting(id,name,price,salerId,endTime,lowPrice,imgUrl,type,introduce,img,author) values(null,#{b.name},#{b.price},#{b.salerId},#{b.endTime},#{b.lowPrice},#{b.imgUrl},#{b.type},#{b.introduce},#{b.img},#{b.author})
+	</insert>
+	
+	<insert id = "c" parameterType = "com.auction.pojo.AuctionChinaWareDO">
+	   insert into auction_chinaware(id,name,price,salerId,endTime,lowPrice,imgUrl,type,introduce,img,author) values(null,#{b.name},#{b.price},#{b.salerId},#{b.endTime},#{b.lowPrice},#{b.imgUrl},#{b.type},#{b.introduce},#{b.img},#{b.author})
+	</insert>
+	
+	<insert id = "j" parameterType = "com.auction.pojo.AuctionJadeWareDO">
+	   insert into auction_jadeware(id,name,price,salerId,endTime,lowPrice,imgUrl,type,introduce,img,author) values(null,#{b.name},#{b.price},#{b.salerId},#{b.endTime},#{b.lowPrice},#{b.imgUrl},#{b.type},#{b.introduce},#{b.img},#{b.author})
+	</insert>
+	
+	<insert id = "l" parameterType = "com.auction.pojo.AuctionLiquorDO">
+	   insert into auction_liquor(id,name,price,salerId,endTime,lowPrice,imgUrl,type,introduce,img,author) values(null,#{b.name},#{b.price},#{b.salerId},#{b.endTime},#{b.lowPrice},#{b.imgUrl},#{b.type},#{b.introduce},#{b.img},#{b.author})
+	</insert>
+</mapper>

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>拍卖网站</title>
+  <link href="../css/menu1.css" rel='stylesheet' type='text/css' />
+  </head>
+  <body>
+ 
+    <div class="navbar"  style="z-index:9">
+		 <a class="menu" href="#"><i class="icon-align-justify"></i></a>
+		 <a class="link hme" href="../project/initAuction">
+			<span class="active"><span class="valign"><span class="vertical">拍部分</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">拍</span></span></span>
+		  </a>
+		  <a class="link abt" href="../project/initSale">
+			<span class="active"><span class="valign"><span class="vertical">卖部分</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">卖</span></span></span>
+		  </a>
+		 <a class="link tdz" href="#" onclick="shopCar()">
+			<span class="active"><span class="valign"><span class="vertical">购物车</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">购物车</span></span></span>
+		  </a>
+		  <a class="link" href="#" onclick="personal()">
+			<span class="active"><span class="valign"><span class="vertical">个人中心</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">个人中心</span></span></span>
+		  </a>
+	</div>
+	<input type = "hidden" id = "user" value = "$!buyer.buyerName"/>
+	<!-- script for menu -->
+	<script>
+		$( "span.menu" ).click(function() {
+		  $( ".navbar" ).slideToggle( "slow", function() {
+		  });
+		});
+	</script>
+   <div>
+        软件6班 &nbsp;&nbsp;&nbsp; 马健聪
+   </div> 
+   
+   	<script>
+	  function shopCar()
+      {
+    	 var buyerName = $("#user").val();
+    	 if($("#user").val() == ""||$("#user").val() == null)
+    	 {
+    		 alert("请先登录");
+    	 }
+    	 else 
+    	 {
+    		 window.location.href="../pay/shopCar"
+    	 }
+      }
+	  function personal()
+	  {
+		  alert("111");
+		  var buyerName = $("#user").val();
+	    	 if($("#user").val() == ""||$("#user").val() == null)
+	    	 {
+	    		 alert("请先登录");
+	    	 }
+	    	 else 
+	    	 {
+	    		 window.location.href="../personal/getPersonalList"
+	    	 }
+	  }
+	</script>
+  </body>
+</html>

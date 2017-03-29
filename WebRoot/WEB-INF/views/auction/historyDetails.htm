@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="../css/menu.css" rel='stylesheet' type='text/css' />
+<link type="text/css" href="../css/css1.css" rel="stylesheet" />
+<script type=text/javascript src="../js/jquery.js"></script>
+<script type=text/javascript src="../js/kefu.js"></script>
+<style type="text/css">
+    ul li{list-style:none}
+   .two li{float:left;width:100px;margin:3px 0 0 3px; border:#CCC 1px solid; cursor:pointer;}
+   .jqzoom{border:1px solid #BBB;position:relative;padding:0px;cursor:pointer;width:425px; display:none;}
+   .two li.bg{ border:0;border:1px solid #F00}
+   .pros p{line-height:20px;}
+   #buyL{ padding:20px; border:#666 1px solid}
+.jqzoom{border:1px solid #BBB;position:relative;padding:0px;cursor:pointer;}
+div.zoomdiv {z-index:999;position:absolute;top:0px;left:0px;width:200px;height:200px;background:#fff;border:1px solid #CCC;display:none;text-align: center;overflow: hidden;}
+div.jqZoomPup {z-index:99;visibility:hidden;position:absolute;top:0px;left:0px;width:50px;height:50px;border: 1px solid #aaa;background: #fff url(http://www.17sucai.com/preview/13911/2015-12-14/images/zoomlens.gif) 50% top  no-repeat;;opacity: 0.5;-moz-opacity: 0.5;-khtml-opacity: 0.5;filter: alpha(Opacity=50);}/*forever*/
+</style>
+<script type="text/javascript" src="../js/jquery1.js"></script>
+<script type="text/javascript" src="../js/jquery.jqzoom.js"></script>
+<script type="text/javascript" src="../js/use_jqzoom.js"></script>
+</head>
+
+<body>
+<script type="text/javascript">
+   $(document).ready(function(){
+	      $(".jqzoom").eq(0).show();
+		  $(".two li").hover(function(){
+				 $(this).addClass("bg").siblings().removeClass();
+			     $(".one>div").eq($(this).index()).show().siblings().hide();
+			 }
+		  )
+	  }
+   )
+</script>
+ <span class="menu"></span>
+    <div class="navbar"  style=" z-index:9">
+		 <a class="menu" href="#"><i class="icon-align-justify"></i></a>
+		 <a class="link hme" href="../project/initAuction">
+			<span class="active"><span class="valign"><span class="vertical">拍部分</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">拍</span></span></span>
+		  </a>
+		  <a class="link abt" href="../project/initSale">
+			<span class="active"><span class="valign"><span class="vertical">卖部分</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">卖</span></span></span>
+		  </a>
+		 <a class="link tdz" href="#" onclick="shopCar()">
+			<span class="active"><span class="valign"><span class="vertical">购物车</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">购物车</span></span></span>
+		  </a>
+		  <a class="link" href="#" onclick="personal()">
+			<span class="active"><span class="valign"><span class="vertical">个人中心</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">个人中心</span></span></span>
+		  </a>
+	</div>
+	<!-- script for menu -->
+	<script>
+		$( "span.menu" ).click(function() {
+		  $( ".navbar" ).slideToggle( "slow", function() {
+		  });
+		});
+	</script>
+ <div class="mainCont">
+   <div class="xian">&nbsp;</div>
+   <div class="cont">
+    <div class="contLeft">
+     <h1 class="logo"><a href="#"><img src="../comImages/logo.jpg" width="183" height="160" /></a></h1>
+     <ul class="nav">
+    	<li><a href="../project/initAuction">网站首页</a></li>
+		<li><a href="../auction/show/book">书籍首页</a></li>
+		<li><a href="../auction/show/painting">画像首页</a></li>
+		<li><a href="../auction/show/chinaware">瓷器首页</a></li>
+		<li><a href="../auction/show/jadeware">玉器首页</a></li>
+		<li><a href="../auction/show/liquor">美酒首页</a></li>
+     </ul><!--nav/-->
+    </div><!--contLeft/-->
+    <div class="contRight">
+     <div class="banner">
+      <img src="../images/banner.jpg" width="722" height="236" />
+     </div><!--banner/-->
+     <div class="positions"><h1>详情</h1></div>
+     <div class="content">
+       <h1>$!historyDetail.name</h1>
+       <table>
+         <tbody>
+         <tr>
+          <td>
+           <div class="one">
+              #if($!imgList)
+                #foreach($!list in $!imgList)
+                 <div class="jqzoom">
+		            <img src="../images/$!list" width="425" height="285" jqimg="../images/$!list" />
+		         </div>
+                #end
+              #end  
+           </div>
+            <ul class="two">
+             #if($!imgList)
+                #foreach($!list in $!imgList)
+                 <li class="bg"><img src="../images/$!list" width="100" height="67" /></li>
+                #end
+              #end  
+		    </ul>
+          </td>
+          <td class="pros" valign="top">
+           <p><strong>藏品名称：$!historyDetail.name</strong></p>
+           <p><strong>成交价格：$!historyDetail.price元</strong></p>
+           <p><strong>结束时间：$dateTool.format("yyyy-MM-dd",$!historyDetail.time)</strong></p>
+           <p><strong>藏品介绍：$!historyDetail.introduce</strong></p>
+          </td>
+         </tr>
+         </tbody>
+       </table>
+     </div><!--content/-->
+    </div><!--contRight/-->
+    <div class="clear"></div>
+   </div><!--cont/-->
+ </div><!--mianCont-->
+ <input type = "hidden" id = "user" value = "$!buyer.buyerName"/>
+ 
+ <script>
+	  function shopCar()
+      {
+    	 var buyerName = $("#user").val();
+    	 if($("#user").val() == ""||$("#user").val() == null)
+    	 {
+    		 alert("请先登录");
+    	 }
+    	 else 
+    	 {
+    		 window.location.href="../pay/shopCar"
+    	 }
+      }
+	  function personal()
+	  {
+		  var buyerName = $("#user").val();
+	    	 if($("#user").val() == ""||$("#user").val() == null)
+	    	 {
+	    		 alert("请先登录");
+	    	 }
+	    	 else 
+	    	 {
+	    		 window.location.href="../personal/getPersonalList"
+	    	 }
+	  }
+	</script>	
+  </body>
+</html>

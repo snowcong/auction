@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.auction.mapper.mapper.SalerRegisterMapper">
+	<sql id="saler_columns">
+		id,salerName,password,imgUrl,commodityId,benefit
+	</sql>
+	
+	<sql id="saler_where">
+		<where>
+			<if test="salerName != null">
+				and salerName = #{saler.salerName}
+			</if>
+		</where>
+	</sql>
+	
+	<select id="isHaveSaler" parameterType="com.auction.pojo.SalerDO" resultType="String">
+		select
+		*
+		from saler where salerName = #{saler.salerName}
+	</select>
+	
+	<insert id="insertSaler" parameterType="com.auction.pojo.SalerDO" >
+	    insert into saler(salerName,password) values(#{saler.salerName},#{saler.password})
+	</insert>
+</mapper>

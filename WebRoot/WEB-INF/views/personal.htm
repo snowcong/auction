@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>个人主页</title>
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+<body class="wrapper">
+	<ul class="nav">
+	    <li>密码管理</li>
+	    <li>购买记录</li>
+	</ul>
+
+	<ul class="container">
+		<li class="password-manage">
+		  <form action = "" method="post">
+		    <div class="row people">
+				<img class="portrait" src="../img/$!img">
+			</div>
+			<div class="password">
+				<div class="col">原密码：</div>
+				<input type="password" id = "pas"/>
+			</div>
+			<div class="password">
+				<div class="col">新密码：</div>
+				<input type="password" id = "apas"/>
+			</div>
+			<div class="password">
+				<div class="col">确认新密码：</div>
+				<input type="password" id = "newPas"/>
+			</div>
+			    <input class="btn" type="button" value ="确认" onclick = "editPas()"/>
+		   </form>
+		</li>
+		<li class="buy-record">
+		    <div class="row people">
+				<img class="portrait" src="../img/$!img">
+			</div>
+			#if($!commodityList)
+			   #foreach($!list in $!commodityList)
+				<div class="row clearfix">
+					<div class="left">
+						<img class="detail-img" src="../img/$!list.imgUrl">
+						<div class="name">$!list.name</div>
+						<div class="price">$!list.price元/个</div>
+						<div class="num">$!list.number个</div>
+						<div class="num">总价：$!list.sum</div>
+					</div>
+					<div class="right">
+						<div>商品描述:</div>
+						<div class="describe">$!list.introduce</div>
+					</div>
+				</div>
+			   #end
+			#end   	
+		</li>
+	</ul>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/main.js"></script>
+	<script>
+      function editPas()
+      {
+    	 var pas = $("#pas").val();
+     	 var apas = $("#apas").val();
+     	 var newPas = $("#newPas").val();
+     	 if(newPas == "" || newPas == null || newPas != apas)
+     	 {
+             alert("两次密码必须一致");
+     	 }
+     	 else
+     	 {
+     		$.ajax({
+	            type:'POST',
+	            url: "../personal/editPas",
+	            data:"pas="+pas+"&newPas="+newPas,
+	            success:function(a){
+	 	            if(a == "success")
+	 	              alert("修改成功");
+	 	            else if(a == "error")
+	 	              alert("原密码输入错误");
+	 	            else
+	 	              alert("修改失败，重新修改");    
+	                 }
+   	              }) 
+     	 } 
+      }
+	</script>
+</body>
+</html>

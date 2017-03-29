@@ -1,0 +1,275 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>拍卖网站</title>
+<link href="../css/menu.css" rel='stylesheet' type='text/css' />
+<link href="../css/style.css" rel='stylesheet' type='text/css' />	
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<link href="../css/reset.css" rel="stylesheet" type="text/css" />
+<script src="../js/jquery-1.9.1.js"></script>
+<script src="../js/fontscroll.js"></script>
+<script src="../js/slidersBox.js"></script>
+<script src="../js/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="../js/zzsc.js"></script>
+<!--[if IE]>
+  <script src="js/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+ <span style = "  width: 53px;
+	  height: 44px;
+	  background: url(../images/nav.jpg)no-repeat 7px 10px;
+	  display: inline-block;
+	  float: left;
+	  cursor: pointer;
+	  z-index: 3;
+	  background-color:#18a3b7;
+	    position: fixed;"></span>
+    <div class="navbar"  style=" z-index:9">
+		 <a class="menu" href="#"><i class="icon-align-justify"></i></a>
+		 <a class="link hme" href="../project/initAuction">
+			<span class="active"><span class="valign"><span class="vertical">拍部分</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">拍</span></span></span>
+		  </a>
+		  <a class="link abt" href="../project/initSale">
+			<span class="active"><span class="valign"><span class="vertical">卖部分</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">卖</span></span></span>
+		  </a>
+		 <a class="link tdz" href="#" onclick="shopCar()">
+			<span class="active"><span class="valign"><span class="vertical">购物车</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">购物车</span></span></span>
+		  </a>
+		  <a class="link" href="#" onclick = "personal()">
+			<span class="active"><span class="valign"><span class="vertical">个人中心</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">个人中心</span></span></span>
+		  </a>
+	</div>
+	<!-- script for menu -->
+	<script>
+		$( "span.menu" ).click(function() {
+		  $( ".navbar" ).slideToggle( "slow", function() {
+		  });
+		});
+	</script>
+	<div class="top">
+		<h1>
+			<a href="#" title="拍卖网站"><img src="../comImages/logo.jpg" style=" z-index:999999"></a>
+		</h1>
+		<ul class="companyName"></ul>
+		<ul class="topRight">
+			<li class="tel"></li>
+			<li class="declaration">网站声明
+				<i></i>
+				<div class="declarationInfo">
+					<a href="#">本公司对所有当代书画作品全部保真拍卖，成交结算后15天内经画家本人鉴定为仿品，本公司无条件退款。逾期按《拍卖法》第六十一条执行。<br>
+<p class="tright">2016年4月5日&nbsp;&nbsp;</p></a>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="nav">
+		<ul class="menu">
+			<li><a href="../project/initAuction">网站首页</a></li>
+			<li><a href="../auction/show/book">书籍首页</a></li>
+			<li><a href="../auction/show/painting">画像首页</a></li>
+			<li><a href="../auction/show/chinaware">瓷器首页</a></li>
+			<li><a href="../auction/show/jadeware">玉器首页</a></li>
+			<li><a href="../auction/show/liquor">美酒首页</a></li>
+		</ul>
+	</div>
+	<div class="banner">
+		<div class="flexslider">
+			<ul class="slides">
+				<li style="background:url(../images/banner1.jpg) 50% 0 no-repeat;" onclick="javascript:document.getElementById('01').click();"><a id="01" href="../auction/show/book"></a></li>
+				<li style="background:url(../images/banner2.jpg) 50% 0 no-repeat;" onclick="javascript:document.getElementById('02').click();"><a id="02" href="../auction/show/painting"></a></li>
+				<li style="background:url(../images/banner3.jpg) 50% 0 no-repeat;" onclick="javascript:document.getElementById('03').click();"><a id="03" href="../auction/show/chinaware"></a></li>
+				<li style="background:url(../images/banner4.jpg) 50% 0 no-repeat;" onclick="javascript:document.getElementById('04').click();"><a id="04" href="../auction/show/jadeware"></a></li>
+			    <li style="background:url(../images/banner1.jpg) 50% 0 no-repeat;" onclick="javascript:document.getElementById('05').click();"><a id="05" href="../auction/show/liquor"></a></li>
+			</ul>
+		</div>
+	</div>
+    <div class="resultShow">
+    	<div class="W-1200">
+        	<div class="resultIcon"><img src="../images/i.jpg" width="47" height="44">拍卖结果展示</div>
+            <div class="resultText" id="FontScroll">
+                 <ul>
+                   #if($!historyList)
+                     #foreach($!list in $!historyList)
+                       <li><a href="../auction/history?id=$!list.id">1、作品名称:$!list.name、作者:$!list.author、估价:$$!list.lowPrice、<span class="red">成交价:RMB$!list.price</span></a></li>
+                     #end
+                   #end  
+                </ul>
+            </div>
+            <div class="more"><a href="../auction/historyList">查看更多>></a></div>
+        </div>
+    </div>
+    <div class="middleContent">
+    	<div class="middleContentLeft notice">
+        	<ul>
+            	<h3>[ 拍卖预告 ]</h3>
+                <li>2015年迎春大型艺术品拍卖会<br>
+                    作品征集中...<br>
+                    欢迎致电:123456789<br>
+                    书画部:123456789br>
+                    邮箱：123456789@58.com
+                </li>
+            </ul>
+        </div>
+        <div class="middleContentRight news">
+        	<h3>新闻资讯<a href="#"></a></h3>
+            <div class="greyBox">
+            <div class="foucs">
+                    	<div class="slidersBox" id="DPic">
+                          	<ul class="slider" id="UPic">
+                               #if($!newsList)
+			            	     #foreach($!list in $!newsList)
+			                	   <li><a target="_blank" href="../auction/news?id=$!list.id" target="_blank"><img src="../images/$list.img" /></a></li>
+			                     #end
+			                   #end  
+                          	</ul>
+                          	<ul class="num" id="UNum">
+                            	<li>1</li>
+                            	<li>2</li>
+                            	<li>3</li>
+                            	<li>4</li>
+                            	<li>5</li>
+                          </ul>
+						</div>
+                </div>
+            	<ul class="newsInfo">
+            	   #if($!newsList)
+            	     #foreach($!list in $!newsList)
+                	<li><span class="right">$dateTool.format("yyyy-MM-dd",$!list.time)</span><a href="../auction/news?id=$!list.id" target="_blank">$!list.title</a></li>
+                     #end
+                   #end  	
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="middleContent">
+    	<div class="middleContentLeft video">
+        	<ul>
+            	<h3>[ 视频展示 ]</h3>
+                <li><video id="video1"  width="194" height="171">
+                	   <source src="/mp4格式视频地址" type="video/mp4" />
+                       <source src="/ogg格式视频地址" type="video/ogg" />
+                    </video>    
+                </li>
+                <li>2016年4月5号春季拍卖会现场</li>
+            </ul>
+        </div>
+        <div class="middleContentRight recommend">
+        	<h3>拍品推荐</h3>
+        	<div class="greyBox">
+            	<div class="recommendInfo">
+					<div class="box">
+						<div class="picbox">
+							<ul class="piclist mainlist">
+							   #if($!recommendList)
+							     #foreach($!list in $!recommendList)
+								  <li><a href="../auction/recommend?id=$!list.id" target="_blank"><img src="../images/$!list.imgUrl" /><br>$!list.name</a></li>
+							     #end
+							   #end  
+							</ul>
+							<ul class="piclist swaplist"></ul>
+						</div>
+						<div class="og_prev"></div>
+						<div class="og_next"></div>
+					</div>				
+				</div>
+            </div>
+        </div>
+	</div>
+	
+	<!--/start-footer-section-->
+			<div class="footer-section">
+					<div class="footer-grids">
+						<div class="col-md-3 footer-grid">
+						<h4>About</h4>
+						<div class="border2"></div>
+						  <p>传统拍卖网站和传统购物网站的结合，成为新的“拍卖”网站；新的潮流，新的思维，带领新的风尚。</p>
+						  <p class="sub">“拍卖”中的拍的就是传统拍卖网站，其中的卖就是传统购物网站，在新的融合之后就是所谓的“拍卖网站”</p>
+						</div>
+						<div class="col-md-3 footer-grid tags">
+								<h4>others</h4>
+								<div class="border2"></div>
+							<ul class="tag">
+								<li><a href="http://www.jd.com/">京东商城</a></li>
+								<li><a href="https://www.tmall.com/">天猫国际</a></li>
+								<li><a href="http://www.suning.com/">苏宁易购</a></li>
+								<li><a href="https://www.taobao.com/">淘宝网</a></li>
+								<li><a href="http://www.paipai.com/">拍拍网</a></li>
+								<li><a href="http://pai.meishujia.cn/">中国拍卖网</a></li>
+								<li><a href="http://www.yeepai.com/">易拍网</a></li>
+								<li><a href="http://top.chinaz.com/site_www.5pai.com.html">我拍网</a></li>
+								<li><a href="http://www.pai777.net/">拍趣网</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3 footer-grid tweet">
+								<h4>reference</h4>
+								<div class="border2"></div>
+								<div class="icon-3-square">
+										<a href="#"><i class="square-3"></i></a>
+									</div>
+							<div class="icon-text">
+								<p>该网站的基础语言，框架的底层编写语言<a href="#">Thinking In Java, Effective Java</a></p>
+							</div>
+								<div class="clearfix"></div>
+								<div class="icon-3-square">
+										<a href="#"><i class="square-3"></i></a>
+								</div>
+								<div class="icon-text">
+								    <p>该网站的后台数据库，数据库的使用与优化 <a href="#">High Performance Mysql, Beginning Mysql</a></p>
+								</div>
+								<div class="clearfix"></div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+	<!--//end-footer-section-->
+			<!--/start-copyright-section-->
+				<div class="copyright">
+						<p class="write">Copyright &copy; 2016.05.20  author：<a href="#">马健聪</a> - 导师： <a href="#">王宇</a></p>
+				</div>
+				<input type = "hidden" id = "user" value = "$!buyer.buyerName"/>
+				
+<script>
+	$(function(){
+		$('.flexslider').flexslider({
+			directionNav: true,
+			pauseOnAction: false,
+			animation: "slide"
+		});
+		//文字向上滚动	
+		$('#FontScroll').FontScroll({time: 3000,num: 1});
+});
+	  function shopCar()
+	    {
+	  	 var buyerName = $("#user").val();
+	  	 if($("#user").val() == ""||$("#user").val() == null)
+	  	 {
+	  		 alert("请先登录");
+	  	 }
+	  	 else 
+	  	 {
+	  		 window.location.href="../pay/shopCar"
+	  	 }
+	    }
+		  function personal()
+		  {
+			  var buyerName = $("#user").val();
+		    	 if($("#user").val() == ""||$("#user").val() == null)
+		    	 {
+		    		 alert("请先登录");
+		    	 }
+		    	 else 
+		    	 {
+		    		 window.location.href="../personal/getPersonalList"
+		    	 }
+		  }
+</script>
+<script type="text/javascript">LoadPicRun("DPic","UPic","UNum",240,5);</script>         
+</body>
+</html>

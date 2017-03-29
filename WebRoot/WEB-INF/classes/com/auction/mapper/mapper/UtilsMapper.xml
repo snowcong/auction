@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.auction.mapper.mapper.UtilsMapper">
+	
+	<resultMap id = "book" type= "com.auction.pojo.AuctionBookDO">
+	   <id column = "id" property = "id"/>
+	   <result column = "name" property = "name"/>
+	   <result column = "price" property = "price"/>
+	   <result column = "salerId" property = "salerId"/>
+	   <result column = "endTime" property = "endTime"/>
+	   <result column = "lowPrice" property = "lowPrice"/>
+	   <result column = "imgUrl" property = "imgUrl"/>
+	   <result column = "type" property = "type"/> 
+	   <result column = "introduce" property = "introduce"/>
+	   <result column = "img" property = "img"/>
+	   <result column = "author" property = "author" />
+	   <result column = "buyerId" property = "buyerId" />
+	</resultMap>
+	
+	<resultMap id = "painting" type= "com.auction.pojo.AuctionPaintingDO">
+	   <id column = "id" property = "id"/>
+	   <result column = "name" property = "name"/>
+	   <result column = "price" property = "price"/>
+	   <result column = "salerId" property = "salerId"/>
+	   <result column = "endTime" property = "endTime"/>
+	   <result column = "lowPrice" property = "lowPrice"/>
+	   <result column = "imgUrl" property = "imgUrl"/>
+	   <result column = "type" property = "type"/> 
+	   <result column = "introduce" property = "introduce"/>
+	   <result column = "img" property = "img"/>
+	   <result column = "author" property = "author" /> 
+	   <result column = "buyerId" property = "buyerId" />
+	</resultMap>
+	
+	<resultMap id = "chinaware" type= "com.auction.pojo.AuctionChinaWareDO">
+	   <id column = "id" property = "id"/>
+	   <result column = "name" property = "name"/>
+	   <result column = "price" property = "price"/>
+	   <result column = "salerId" property = "salerId"/>
+	   <result column = "endTime" property = "endTime"/>
+	   <result column = "lowPrice" property = "lowPrice"/>
+	   <result column = "imgUrl" property = "imgUrl"/>
+	   <result column = "type" property = "type"/>
+	   <result column = "introduce" property = "introduce"/>
+	   <result column = "img" property = "img"/> 
+	   <result column = "author" property = "author" />
+	   <result column = "buyerId" property = "buyerId" />
+	</resultMap>
+	
+	<resultMap id = "jadeware" type= "com.auction.pojo.AuctionJadeWareDO">
+	   <id column = "id" property = "id"/>
+	   <result column = "name" property = "name"/>
+	   <result column = "price" property = "price"/>
+	   <result column = "salerId" property = "salerId"/>
+	   <result column = "endTime" property = "endTime"/>
+	   <result column = "lowPrice" property = "lowPrice"/>
+	   <result column = "imgUrl" property = "imgUrl"/>
+	   <result column = "type" property = "type"/>
+	   <result column = "introduce" property = "introduce"/>
+	   <result column = "img" property = "img"/> 
+	   <result column = "author" property = "author" />
+	   <result column = "buyerId" property = "buyerId" />
+	</resultMap>
+	
+	<resultMap id = "liquor" type= "com.auction.pojo.AuctionLiquorDO">
+	   <id column = "id" property = "id"/>
+	   <result column = "name" property = "name"/>
+	   <result column = "price" property = "price"/>
+	   <result column = "salerId" property = "salerId"/>
+	   <result column = "endTime" property = "endTime"/>
+	   <result column = "lowPrice" property = "lowPrice"/>
+	   <result column = "imgUrl" property = "imgUrl"/>
+	   <result column = "type" property = "type"/>
+	   <result column = "introduce" property = "introduce"/>
+	   <result column = "img" property = "img"/> 
+	   <result column = "author" property = "author" />
+	   <result column = "buyerId" property = "buyerId" />
+	</resultMap>
+	
+    <resultMap id = "auctionHistory" type= "com.auction.pojo.AuctionHistoryDO">
+	   <id column = "id" property = "id"/>
+	   <result column = "name" property = "name"/>
+	   <result column = "price" property = "price"/>
+	   <result column = "lowPrice" property = "lowPrice"/>
+	   <result column = "img" property = "img"/>
+	   <result column = "introduce" property = "introduce"/>
+	   <result column = "time" property = "time"/>
+	   <result column = "author" property = "author" />
+	   <result column = "buyerId" property = "buyerId" />
+	   <result column = "type" property = "type"/>
+	   <result column = "imgUrl" property = "imgUrl"/>
+	</resultMap>
+	
+	<select id = "getBookList" resultMap = "book">
+		select
+		*
+		from auction_book where sysdate() >= endTime
+	</select>
+	
+	<select id = "getChinaWareList" resultMap = "chinaware">
+		select
+		*
+		from auction_chinaware where sysdate() >= endTime
+	</select>
+	
+	<select id = "getPaintingList" resultMap = "painting">
+		select
+		*
+		from auction_painting where sysdate() >= endTime
+	</select>
+	
+	<select id = "getJadeWareList" resultMap = "jadeware">
+		select
+		*
+		from auction_jadeware where sysdate() >= endTime
+	</select>
+	
+	<select id = "getLiquorList" resultMap = "liquor">
+		select
+		*
+		from auction_liquor where sysdate() >= endTime
+	</select>
+	
+	<insert id = "insertBook" parameterType = "com.auction.pojo.AuctionBookDO">
+	    insert into  
+	    history(id,name,price,lowPrice,time,introduce,img,author,buyerId,type,salerId,imgUrl)
+	    values(null,#{book.name},#{book.price},#{book.lowPrice},#{book.endTime},#{book.introduce},#{book.img},#{book.author},#{book.buyerId},#{book.type},#{book.salerId},#{book.imgUrl})
+	</insert>
+	
+	<insert id = "insertPainting" parameterType = "com.auction.pojo.AuctionPaintingDO">
+	    insert into  
+	    history(id,name,price,lowPrice,time,introduce,img,author,buyerId,type,salerId,imgUrl)
+	    values(null,#{painting.name},#{painting.price},#{painting.lowPrice}, #{painting.endTime},#{painting.introduce},#{painting.img},#{painting.author},#{painting.buyerId},#{painting.type},#{painting.salerId},#{painting.imgUrl})
+	</insert>
+	
+	<insert id = "insertChinaWare" parameterType = "com.auction.pojo.AuctionChinaWareDO">
+	    insert into  
+	    history(id,name,price,lowPrice,time,introduce,img,author,buyerId,type,salerId,imgUrl)
+	    values(null,#{chinaware.name},#{chinaware.price},#{chinaware.lowPrice},#{chinaware.endTime},#{chinaware.introduce},#{chinaware.img},#{chinaware.author},#{chinaware.buyerId},#{chinaware.type},#{chinaware.salerId},#{chinaware.imgUrl})
+	</insert>
+	
+	<insert id = "insertJadeWare" parameterType = "com.auction.pojo.AuctionJadeWareDO">
+	    insert into  
+	    history(id,name,price,lowPrice,time,introduce,img,author,buyerId,type,salerId,imgUrl)
+	    values(null,#{jadeware.name},#{jadeware.price},#{jadeware.lowPrice}, #{jadeware.endTime},#{jadeware.introduce},#{jadeware.img},#{jadeware.author},#{jadeware.buyerId},#{jadeware.type},#{jadeware.salerId},#{jadeware.imgUrl})
+	</insert>
+	
+	<insert id = "insertLiquor" parameterType = "com.auction.pojo.AuctionLiquorDO">
+	    insert into  
+	    history(id,name,price,lowPrice,time,introduce,img,author,buyerId,type,salerId,imgUrl)
+	    values(null,#{liquor.name},#{liquor.price},#{liquor.lowPrice},#{liquor.endTime},#{liquor.introduce},#{liquor.img},#{liquor.author},#{liquor.buyerId},#{liquor.type},#{liquor.salerId},#{liquor.imgUrl})
+	</insert>
+	
+	<delete id = "deleteBook" parameterType = "int">
+	    delete from auction_book where id = #{id}
+	</delete>
+	
+	<delete id = "deletePainting" parameterType = "int">
+	    delete from auction_painting where id = #{id}
+	</delete>
+	
+	<delete id = "deleteChinaWare" parameterType = "int">
+	    delete from auction_chinaware where id = #{id}
+	</delete>
+	
+	<delete id = "deleteJadeWare" parameterType = "int">
+	    delete from auction_jadeware where id = #{id}
+	</delete>
+	
+	<delete id = "deleteLiquor" parameterType = "int">
+	    delete from auction_liquor where id = #{id}
+	</delete>
+	
+	<update id = "de" parameterType = "int">
+	    update commodity set number = (number-1) where id = #{id}
+	</update>
+</mapper>

@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>拍卖网站</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/reset.css" type="text/css" />
+	<link rel="stylesheet" href="../styles/main.css" type="text/css" />
+	<link rel="stylesheet" href="../styles/thickbox.css" type="text/css" />
+	<link rel="stylesheet" href='../styles/box.css' type='text/css' />
+	<link rel="stylesheet" href="../comCss/style.css"/>
+	<link rel="stylesheet" href="../comCss/colors.css"/>
+	<link rel="stylesheet" href="../comCss/skeleton.css"/>
+	<link rel="stylesheet" href="../comCss/layout.css"/>
+	<link rel="stylesheet" href="../comCss/ddsmoothmenu.css"/>
+	<link rel="stylesheet" href="../comCss/elastislide.css"/>
+	<link rel="stylesheet" href="../comCss/home_flexslider.css"/>
+	<link rel="stylesheet" href="../comCss/light_box.css"/>
+    <style>
+        html,body,div,span,ul,li,table,tr,td,img{ margin: 0; padding: 0; list-style: none; }
+        .all-car-one{ height: auto; padding-left: 110px; padding-right: 110px;}
+        .tab-title{ height: 76px;vertical-align: top; line-height: 76px; font-size: 20px;border-bottom: 1px solid #dfdfdf;}
+        .tab-title:before{ background: url("img/icon.png"); content: ' ';vertical-align: middle; display: inline-block;margin-right: 6px; width: 56px; height: 56px;}
+        .product-title{ font-size: 14px; text-align:center; height: 53px;line-height: 53px;border-bottom: 1px solid #dfdfdf;padding: 10px 0 0 32px;font-weight: 500}
+        .product-title li,.product-list-des li{ float: left;padding:0 30px; }
+        .product-name{ padding-left: 32px; text-align: left;width: 120px;}
+        .product-input{  margin-top:40px; padding-left: 32px; text-align: left;width: 120px;}
+        .product-list-des{ text-align:center; height: 94px;line-height: 94px;font-size: 14px;padding: 10px 0 0 32px;}
+        .pay-total{ margin-top: 130px;text-align: right}
+        .orange{ font-size: 24px;font-weight: 600;margin-right: 20px;color: #ff6829;}
+        .submit-order{ width: 165px; height: 50px;line-height: 50px;color: white;background-color:#fe5112; border: 0px;}
+    </style>
+    <script  src="../js/jquery.js"></script>
+    <link href="../css/menu.css" rel='stylesheet' type='text/css' />
+  </head>
+  
+  <body>
+  <span class="menu"></span>
+    <div class="navbar"  style="z-index:9">
+		 <a class="menu" href="#"><i class="icon-align-justify"></i></a>
+		 <a class="link hme" href="../project/initAuction">
+			<span class="active"><span class="valign"><span class="vertical">拍部分</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">拍</span></span></span>
+		  </a>
+		  <a class="link abt" href="../project/initSale">
+			<span class="active"><span class="valign"><span class="vertical">卖部分</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">卖</span></span></span>
+		  </a>
+		 <a class="link tdz" href="#" onclick="shopCar()">
+			<span class="active"><span class="valign"><span class="vertical">购物车</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">购物车</span></span></span>
+		  </a>
+		  <a class="link" href="#" onclick="personal()">
+			<span class="active"><span class="valign"><span class="vertical">个人中心</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">个人中心</span></span></span>
+		  </a>
+	</div>
+	<!-- script for menu -->
+	<script>
+		$( "span.menu" ).click(function() {
+		  $( ".navbar" ).slideToggle( "slow", function() {
+		  });
+		});
+	</script>
+	<div class="header-wrapper">
+              <header class="container">
+                <div class="head-right">
+                      <ul class="top-nav">
+                          #if($!buyer)
+                             <li class="checkout"><a href="#" >hello&nbsp;&nbsp;&nbsp; $!buyer.buyerName</a></li>
+                          #elseif($!saler)
+                             <li class="checkout"><a href="#">hello&nbsp;&nbsp;&nbsp; $!saler.salerName</a></li>
+                          #else
+                             <li class="checkout"><a href="../project/index" title="登录">登录</a></li>
+                             <li class="log-in"><a href="../project/index" title="注册">注册</a></li>
+                          #end 
+                      </ul>
+                  <section class="header-bottom">
+                    <div class="cart-block">
+						<ul>
+							<li><a href = "../pay/shopCar"><img title="购物车" alt="Item" src="../comImages/item_icon.jpg" /></a></li>
+							<li><a href = "../pay/shopCar">购物车</a></li>
+						</ul>
+				   </div>
+                    <div class="search-block">
+	                     <form action = "../search/vagueSearch" method = "post">
+					         <input type = "text" name = "search" placeholder = "输入搜索内容"/>  
+					         <input type = "submit" value = "搜索"/>
+				         </form>  
+                    </div>
+                  </section>
+                </div>
+                <h1 class="logo">
+                  <img title="Logo" alt="Logo" src="../comImages/logo.jpg" />
+                </h1>
+              </header>
+</div>
+       <div class="all-car-one">
+	    <div class="tab-title">我的购物车</div>
+		    <ul class="product-title">
+		        <li class="product-name">商品名称</li>
+		        <li class="product-name">价格</li>
+		        <li class="product-name">数量</li>
+		        <li class="product-name">小计</li>
+		        <li class="product-name">操作</li>
+		        <li class="product-name">结算</li>
+		    </ul>
+	     <form action = "../pay/finishPay" method = "post">
+		    <div class="product-list">
+			       #if($!sCar) 
+		              #foreach($!list in $!sCar)
+				        <ul class="product-list-des">
+				            <li class="product-name">$!list.name</li>
+				            <li class="product-name">$!list.onePrice</li>
+				            <li class="product-name">$!list.num</li>	
+				            <li class="product-name">$list.price</li>
+				            <li class="product-input"><input type = "button" value = "删除" onclick = "del()" /> </li>
+				            <li class="product-input"><input type = "checkbox" id = "payment" name = "payment" value = "$!list.id" checked="checked"/></li>
+				            <input type = "hidden" value = $!list.id id = "id"/>
+	                        <input type = "hidden" value = "$!list.num" id = "num" name = "num"/>
+				        </ul>
+			          #end
+                   #end
+		    </div>
+		    <div class="pay-total">
+		        <input class="submit-order" type="submit" value="结算">
+		    </div>
+		 </form>
+		</div>
+	 
+  </body>
+    
+    <script>
+      function del()
+      {
+          var id = $("#id").val();
+    	  $.ajax({
+	            type:'POST',
+	            url: "../ajax/delete",
+	            data:"id="+id,
+	            success:function(a){
+	 	            if(a == "success")
+	 	              alert("成功删除");
+	 	            else
+	 	              alert("系统出现错误，请稍候再试");  
+	            }
+  	     }) 
+      }
+    </script>
+</html>

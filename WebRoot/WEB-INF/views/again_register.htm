@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../css/login.css">
+</head>
+<body>
+	<div class="bg"></div>
+	<div class="right">
+		<form action="../register/submit" method="post">
+			<div class="error">$!registerMsg</div>
+			<div>
+				<label class="lable">用户名：</label>
+				<input type="text" class="text" placeholder="用户名" name = "username"/>
+			</div>
+			<div>
+				<label class="lable">密码：</label>
+				<input type="password"  class="text" placeholder="密码" name = "password"/>
+			</div>
+			<div>
+				<input type = "radio" name = "type" value = "buyer" checked="checked"/><span>买家</span>
+	            <input type = "radio" name = "type" value = "saler"/><span>卖家</span>&nbsp;&nbsp;&nbsp;
+			</div>
+			<input type="submit" class="btn" value="注册" />
+		</form>
+	</div>
+</body>
+</html>

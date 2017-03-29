@@ -1,0 +1,8 @@
+/* CSS Document */
+*{margin:0; padding:0}
+#footer{width:817px; margin:0 auto}
+ #bottommenu{  width:504px;   margin:0 auto;   margin-top:80px;   padding-bottom:20px;   height:24px;   line-height:24px;   background:url(../images/footer.jpg) no-repeat center center}
+ #bottommenu ul{ list-style:none;  height:20px;  padding-left:15px;  line-height:20px;  padding-top:13px!important;  padding-top:20px}
+ #bottommenu li{ display:block;  float:left;  margin-left:10px}
+/* CSS Document */
+

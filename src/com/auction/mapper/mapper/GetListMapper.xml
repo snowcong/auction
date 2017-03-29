@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.auction.mapper.mapper.GetListMapper">
+	
+	<!--<typeAlias type="com.auction.mapper.pojo.PriceList" alias="priceList"/>-->
+	
+	<resultMap id = "priceList" type= "com.auction.pojo.PriceListDO">
+	   <id column = "id" property = "id"/>
+	   <result column = "price" property = "price"/>
+	   <result column = "commodityId" property = "commodityId"/>
+	</resultMap>
+	
+	<resultMap id = "numList" type= "com.auction.pojo.NumListDO">
+	   <id column = "id" property = "id"/>
+	   <result column = "num" property = "num"/>
+	   <result column = "commodityId" property = "commodityId"/>
+	</resultMap>
+	
+	<resultMap id = "sport" type= "com.auction.pojo.SportCommodityDO">
+	   <id column = "id" property = "id"/>
+	   <result column = "name" property = "name"/>
+	   <result column = "price" property = "price"/>
+	   <result column = "introduce" property = "introduce"/>
+	   <result column = "number" property = "number"/>
+	   <result column = "flag" property = "flag"/>
+	   <result column = "level" property = "level"/>
+	   <result column = "beginTime" property = "beginTime"/>
+	   <result column = "endTime" property = "endTime"/>
+	   <result column = "commodityId" property = "commodityId"/>
+	   <result column = "img" property = "img"/>
+	</resultMap>
+	
+	<resultMap id = "entertainment" type= "com.auction.pojo.EntertainmentCommodityDO">
+	   <id column = "id" property = "id"/>
+	   <result column = "name" property = "name"/>
+	   <result column = "price" property = "price"/>
+	   <result column = "introduce" property = "introduce"/>
+	   <result column = "number" property = "number"/>
+	   <result column = "flag" property = "flag"/>
+	   <result column = "level" property = "level"/>
+	   <result column = "beginTime" property = "beginTime"/>
+	   <result column = "endTime" property = "endTime"/>
+	   <result column = "commodityId" property = "commodityId"/>
+	   <result column = "img" property = "img"/>
+	</resultMap>
+	
+	<resultMap id = "others" type= "com.auction.pojo.OthersCommodityDO">
+	   <id column = "id" property = "id"/>
+	   <result column = "name" property = "name"/>
+	   <result column = "price" property = "price"/>
+	   <result column = "introduce" property = "introduce"/>
+	   <result column = "number" property = "number"/>
+	   <result column = "flag" property = "flag"/>
+	   <result column = "level" property = "level"/>
+	   <result column = "beginTime" property = "beginTime"/>
+	   <result column = "endTime" property = "endTime"/>
+	   <result column = "commodityId" property = "commodityId"/>
+	   <result column = "img" property = "img"/>
+	</resultMap>
+	
+	<resultMap id = "life" type= "com.auction.pojo.LifeCommodityDO">
+	   <id column = "id" property = "id"/>
+	   <result column = "name" property = "name"/>
+	   <result column = "price" property = "price"/>
+	   <result column = "introduce" property = "introduce"/>
+	   <result column = "number" property = "number"/>
+	   <result column = "flag" property = "flag"/>
+	   <result column = "level" property = "level"/>
+	   <result column = "beginTime" property = "beginTime"/>
+	   <result column = "endTime" property = "endTime"/>
+	   <result column = "commodityId" property = "commodityId"/>
+	   <result column = "img" property = "img"/>
+	</resultMap>
+	
+	<resultMap id = "news" type= "com.auction.pojo.CommodityNewDO">
+	   <id column = "id" property = "id"/>
+	   <result column = "name" property = "name"/>
+	   <result column = "price" property = "price"/>
+	   <result column = "introduce" property = "introduce"/>
+	   <result column = "number" property = "number"/>
+	   <result column = "flag" property = "flag"/>
+	   <result column = "level" property = "level"/>
+	   <result column = "beginTime" property = "beginTime"/>
+	   <result column = "endTime" property = "endTime"/>
+	   <result column = "commodityId" property = "commodityId"/>
+	   <result column = "img" property = "img"/>
+	</resultMap>
+	
+    <resultMap id = "recommend" type= "com.auction.pojo.CommodityRecommendDO">
+	   <id column = "id" property = "id"/>
+	   <result column = "name" property = "name"/>
+	   <result column = "price" property = "price"/>
+	   <result column = "introduce" property = "introduce"/>
+	   <result column = "number" property = "number"/>
+	   <result column = "flag" property = "flag"/>
+	   <result column = "level" property = "level"/>
+	   <result column = "beginTime" property = "beginTime"/>
+	   <result column = "endTime" property = "endTime"/>
+	   <result column = "commodityId" property = "commodityId"/>
+	   <result column = "img" property = "img"/>
+	</resultMap>
+	
+	<select id = "getPriceList" resultMap = "priceList">
+		select
+		*
+		from priceList order by price desc limit 0,10
+	</select>
+	
+	<select id = "getNumList" resultMap = "numList">
+	    select
+		*
+		from numList order by num desc limit 0,10
+	</select>
+	
+    <select id = "getSport" resultMap = "sport">
+		select
+		*
+		from sportCommodity order by level desc limit 0,10
+	</select>
+	
+	<select id = "getOthers" resultMap = "others">
+		select
+		*
+		from othersCommodity order by level desc limit 0,10
+	</select>
+	
+	<select id = "getLife" resultMap = "life">
+		select
+		*
+		from lifeCommodity order by level desc limit 0,10
+	</select>
+	
+	<select id = "getEntertainment" resultMap = "entertainment">
+		select
+		*
+		from entertainmentCommodity order by level desc limit 0,10
+	</select>
+	
+	<select id = "getNews" resultMap = "news">
+		select
+		*
+		from commoditynew order by level desc limit 0,10
+	</select>
+	
+	<select id = "getRecommend" resultMap = "recommend">
+		select
+		*
+		from commodityrecommend order by level desc limit 0,10
+	</select>
+</mapper>

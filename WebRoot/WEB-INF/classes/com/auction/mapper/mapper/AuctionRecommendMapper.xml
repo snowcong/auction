@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.auction.mapper.mapper.AuctionRecommendMapper">
+	
+	<resultMap id = "recommend" type= "com.auction.pojo.AuctionRecommendDO">
+	   <id column = "id" property = "id"/>
+	   <result column = "name" property = "name"/>
+	   <result column = "price" property = "price"/>
+	   <result column = "lowPrice" property = "lowPrice"/>
+	   <result column = "img" property = "img"/>
+	   <result column = "introduce" property = "introduce"/>
+	   <result column = "time" property = "time"/>
+	   <result column = "author" property = "author" />
+	   <result column = "imgUrl" property = "imgUrl"/>
+	   <result column = "buyerId" property = "buyerId" />
+	</resultMap>
+	
+	<select id = "getRecommend" resultType = "com.auction.pojo.AuctionRecommendDO" parameterType = "int">
+		select
+		*
+		from recommend where id = #{id}
+	</select>
+	
+	<select id = "getRecommendList" resultMap = "recommend">
+		select
+		*
+		from recommend order by time desc
+	</select>
+</mapper>

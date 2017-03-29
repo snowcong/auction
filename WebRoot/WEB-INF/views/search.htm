@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>拍卖网站</title>
+  <link href="../css/menu1.css" rel='stylesheet' type='text/css' />
+	<style type="text/css"> 
+		.header{
+		width: 1000px;
+		margin: 0 auto;
+		height: 50px;
+		border-bottom: 2px solid #000;
+		}
+		.header .logo {
+			float: left;
+			width: 50px;
+			height: 50px;
+		}
+		.header .title {
+			display: inline-block;
+			padding: 15px 20px;
+			font-weight: 100;
+			font-size: 22px;
+			color: #000;
+		}
+		
+		.container {
+			width: 1000px;
+			margin: 0 auto;
+		}
+		.container .sku {
+			width: 220px;
+			height: 300px;
+			float: left;
+			margin: 10px;
+			border: 1px solid #ccc;
+		}
+		.sku a {
+			display: block;
+			width: 100%;
+			height: 100%;
+			text-decoration: none;
+			font-size: 16px;
+			color: #666;
+		}
+		.sku .show-img {
+			width: 100%;
+			height: 250px;
+			!improtant;
+		}
+		.sku .name {
+			width: 100%;
+			height: 50px;
+			text-align: center;
+			line-height: 50px;
+		}
+	</style>    
+  </head>
+  
+  <body>
+ 
+    <div class="navbar"  style="z-index:9">
+		 <a class="menu" href="#"><i class="icon-align-justify"></i></a>
+		 <a class="link hme" href="../project/initAuction">
+			<span class="active"><span class="valign"><span class="vertical">拍部分</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">拍</span></span></span>
+		  </a>
+		  <a class="link abt" href="../project/initSale">
+			<span class="active"><span class="valign"><span class="vertical">卖部分</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">卖</span></span></span>
+		  </a>
+		 <a class="link tdz" href="#" onclick="shopCar()">
+			<span class="active"><span class="valign"><span class="vertical">购物车</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">购物车</span></span></span>
+		  </a>
+		  <a class="link" href="#" onclick="personal()">
+			<span class="active"><span class="valign"><span class="vertical">个人中心</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">个人中心</span></span></span>
+		  </a>
+	</div>
+	<!-- script for menu -->
+	<script>
+		$( "span.menu" ).click(function() {
+		  $( ".navbar" ).slideToggle( "slow", function() {
+		  });
+		});
+	</script>
+   
+     <header class="header">
+			<img src="../images/list.jpg" class="logo" />
+			<div class="title"> 相关商品：</div>
+		</header>
+		<div class="container">
+		   #if($!searchList) 
+             #foreach($!list in $!searchList)
+				<section class="sku">
+					 <a href = "../commodity/particulars?commodityId=$!list.id">
+						<img class="show-img" src="../images/$!list.imgUrl" />
+						<div class="name">$!list.name</div>
+					</a>
+				</section>
+		     #end
+		   #end
+		</div>
+		<input type = "hidden" id = "user" value = "$!buyer.buyerName"/>
+<script>
+	  function shopCar()
+      {
+    	 var buyerName = $("#user").val();
+    	 if($("#user").val() == ""||$("#user").val() == null)
+    	 {
+    		 alert("请先登录");
+    	 }
+    	 else 
+    	 {
+    		 window.location.href="../pay/shopCar"
+    	 }
+      }
+	  function personal()
+	  {
+		  var buyerName = $("#user").val();
+	    	 if($("#user").val() == ""||$("#user").val() == null)
+	    	 {
+	    		 alert("请先登录");
+	    	 }
+	    	 else 
+	    	 {
+	    		 window.location.href="../personal/getPersonalList"
+	    	 }
+	  }
+	</script>
+  </body>
+</html>

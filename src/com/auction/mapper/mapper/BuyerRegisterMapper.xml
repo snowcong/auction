@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.auction.mapper.mapper.BuyerRegisterMapper">
+	<sql id="buyer_columns">
+		id,buyerName,password,imgUrl
+	</sql>
+	
+	<sql id="buyer_where">
+		<where>
+			<if test="buyerName != null">
+				and buyerName = #{buyer.buyerName}
+			</if>
+		</where>
+	</sql>
+	
+	<select id="isHaveBuyer" parameterType="com.auction.pojo.BuyerDO" resultType="String">
+		select
+		*
+		from buyer where buyerName = #{buyer.buyerName} 
+	</select>
+	
+	<insert id="insertBuyer" parameterType="com.auction.pojo.BuyerDO" >
+	    insert into buyer(buyerName,password) values(#{buyer.buyerName},#{buyer.password})
+	</insert>
+</mapper>

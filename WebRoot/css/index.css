@@ -1,0 +1,101 @@
+html, body{
+ font-family: 'Raleway', sans-serif;
+    font-size: 100%;
+}
+
+.loginText{
+  margin-left: 400px;
+  font-size:40px; 
+  color: #0099ff;
+  margin-bottom: 50px;
+}
+
+.loginText1{
+  margin-left: 400px;
+  font-size:40px; 
+  color: #0099ff;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.loginText2{
+  margin-left: 500px;
+  font-size:40px; 
+  color: #0099ff;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.mainLogin{
+  width: 1200px;
+  height:300px;
+}
+
+.imgLogin{
+  float: left;
+  margin-left: 100px;
+}
+.imgLogin img{
+  width:500px;
+  height: 300px;
+}
+
+.login {
+  width:300px;
+  height: 300px;
+  margin-left: 800px;
+}
+
+.login input{
+  margin-top: 30px;
+}
+
+.login span{
+  color:#00F;
+}
+
+.mainRegister{
+  width:1200px;
+  height:300px;
+}
+
+.imgRegister{
+  margin-left: 100px;
+  float: left;
+}
+.imgRegister img{
+  width: 500px;
+  height:300px;
+}
+
+.register{
+  width:300px;
+  height:300px;
+  margin-left: 800px;
+}
+
+.register input{
+  margin-top:30px;
+}
+
+.register span{
+  color:#00F;
+}
+
+.success{
+  height:150px;	
+  	
+}
+
+.checkout{
+  color:#66FFFF;	
+  font-size:40px;
+  text-align:center;
+}
+
+
+
+
+
+
+

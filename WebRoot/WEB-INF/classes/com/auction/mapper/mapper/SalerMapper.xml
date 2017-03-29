@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.auction.mapper.mapper.SalerMapper">
+	
+	<sql id="all_columns">
+		id,salerName,password,imgUrl,commodityId,benefit
+	</sql>
+	
+	<sql id="where">
+		<where>
+			<if test="salerName != null">
+				and salerName = #{saler.salerName}
+			</if>
+			<if test="password != null">
+				and password = #{saler.password}
+			</if>
+		</where>
+	</sql>
+	
+	<select id="loginVerify" parameterType="com.auction.pojo.SalerDO" resultType="com.auction.pojo.SalerDO">
+		select
+		*
+		from saler where salerName = #{saler.salerName} and password = #{saler.password}
+	</select>
+	
+	<select id="getSaler" parameterType="Integer" resultType="com.auction.pojo.SalerDO">
+		select
+		*
+		from saler where id = #{sid}
+	</select>
+	
+	<update id = "updatePas" parameterType = "com.auction.pojo.SalerDO">
+	    update saler set password = #{saler.password} where id = #{saler.id}
+	</update>
+</mapper>

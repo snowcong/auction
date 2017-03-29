@@ -1,0 +1,258 @@
+<!doctype html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>拍卖网站</title>
+
+<!--js-->
+<script src="../comJs/jquery-1.8.2.min.js"></script>
+<script src="../comJs/common.js"></script>
+<script src="../comJs/jquery.easing.1.3.js"></script>
+<script src="../comJs/ddsmoothmenu.js"></script>
+<script src="../comJs/jquery.flexslider.js"></script>
+<script src="../comJs/jquery.elastislide.js"></script>
+<script src="../comJs/jquery.jcarousel.min.js"></script>
+<script src="../comJs/jquery.accordion.js"></script>
+<script src="../comJs/light_box.js"></script>
+<script type="text/javascript">$(document).ready(function(){$(".inline").colorbox({inline:true, width:"50%"});});</script>
+<!--end js-->
+<!-- Mobile Specific Metas ================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!-- CSS ================================================== -->
+<link rel="stylesheet" href="../comCss/style.css">
+<link rel="stylesheet" href="../comCss/colors.css">
+<link rel="stylesheet" href="../comCss/skeleton.css">
+<link rel="stylesheet" href="../comCss/layout.css">
+<link rel="stylesheet" href="../comCss/ddsmoothmenu.css"/>
+<link rel="stylesheet" href="../comCss/elastislide.css"/>
+<link rel="stylesheet" href="../comCss/home_flexslider.css"/>
+<link rel="stylesheet" href="../comCss/light_box.css"/>
+<script src="../comJs/html5.js"></script>
+<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link href="../css/menu.css" rel='stylesheet' type='text/css' />
+</head>
+<body>
+<span class="menu"></span>
+    <div class="navbar"  style=" z-index:9">
+		 <a class="menu" href="#"><i class="icon-align-justify"></i></a>
+		 <a class="link hme" href="../project/initAuction">
+			<span class="active"><span class="valign"><span class="vertical">拍部分</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">拍</span></span></span>
+		  </a>
+		  <a class="link abt" href="../project/initSale">
+			<span class="active"><span class="valign"><span class="vertical">卖部分</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">卖</span></span></span>
+		  </a>
+		 <a class="link tdz"  href="#" onclick = "shopCar()">
+			<span class="active"><span class="valign"><span class="vertical">购物车</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">购物车</span></span></span>
+		  </a>
+		  <a class="link" href="#" onclick="personal()">
+			<span class="active"><span class="valign"><span class="vertical">个人中心</span></span></span>
+			<span class="hover"><span class="valign"><span class="vertical">个人中心</span></span></span>
+		  </a>
+	</div>
+	<!-- script for menu -->
+	<script>
+		$( "span.menu" ).click(function() {
+		  $( ".navbar" ).slideToggle( "slow", function() {
+		  });
+		});
+	</script>
+	<div class="mainContainer sixteen container">
+            <!--Header Block-->
+            <div class="header-wrapper">
+              <header class="container">
+                <div class="head-right">
+                      <ul class="top-nav">
+                          #if($!buyer)
+                             <li class="checkout"><a href="#" >hello&nbsp;&nbsp;&nbsp; $!buyer.buyerName</a></li>
+                          #elseif($!saler)
+                             <li class="checkout"><a href="#">hello&nbsp;&nbsp;&nbsp; $!saler.salerName</a></li>
+                          #else
+                             <li class="checkout"><a href="../project/index" title="登录">登录</a></li>
+                             <li class="log-in"><a href="../project/index" title="注册">注册</a></li>
+                          #end 
+                      </ul>
+                  <section class="header-bottom">
+                    <div class="cart-block">
+						<ul>
+							<li><a  onclick = "shopCar()"><img title="购物车" alt="Item" src="../comImages/item_icon.jpg" /></a></li>
+							<li><a  onclick = "shopCar()">购物车</a></li>
+						</ul>
+				   </div>
+                    <div class="search-block">
+	                     <form action = "../search/vagueSearch" method = "post">
+					         <input type = "text" name = "search" placeholder = "输入搜索内容"/>  
+					         <input type = "submit" value = "搜索"/>
+				         </form>  
+                    </div>
+                  </section>
+                </div>
+                <h1 class="logo">
+                  <img title="Logo" alt="Logo" src="../comImages/logo.jpg" />
+                </h1>
+                <nav id="smoothmenu1" class="ddsmoothmenu mainMenu">
+                  <ul id="nav">
+                    <li class="active"><a href="../commodity/index">首页</a></li>
+                    <li class=""><a href="../commodity/sport?begin=0&number=20" title="Shop by">运动商品</a> </li>
+                    <li class=""><a href="../commodity/entertainment?begin=0&number=20">娱乐商品</a></li>
+                    <li class=""><a href="../commodity/life?begin=0&number=20" >生活商品</a></li>
+                    <li class=""><a href="../commodity/others?begin=0&number=20" >其他商品</a></li>
+                    <li class=""><a href="../commodity/aboutus" >关于我们</a></li>
+                  </ul>
+                </nav>
+              </header>
+            </div>
+            <!--Banner Block-->
+            <section class="banner-wrapper">
+              <div class="banner-block container">
+                <div class="flexslider">
+                  <ul class="slides">
+                    <li><img title="Banner" alt="Banner" src="../comImages/banner1.jpg" /></li>
+                    <li><img title="Banner" alt="Banner" src="../comImages/banner2.jpg" /></li>
+                    <li><img title="Banner" alt="Banner" src="../comImages/banner3.jpg" /></li>
+                    <li><img title="Banner" alt="Banner" src="../comImages/banner4.jpg" /></li>
+                  </ul>
+                </div>
+                <ul class="banner-add">
+	                 <div id="toptitle">
+		                 <span>价格排行榜</span>
+						   <ul>
+								 #if($!priceList) 
+								     #foreach($!list in $!priceList)
+								   <li> <a href = "../commodity/particulars?commodityId=$!list.commodityId">$!list.commodityName</a> 
+								       $!list.price 元  </li>
+								     #end
+							     #end
+						   </ul>
+		                 <span>销量排行榜</span>
+						   <ul>
+						     #if($!numList) 
+						      #foreach($!list in $!numList)
+						        <li> <a href = "../commodity/particulars?commodityId=$!list.commodityId">$!list.commodityName</a>  
+						        $!list.num  个</li>
+						      #end
+						     #end
+						   </ul>
+				      </div>
+                </ul>
+              </div>
+            </section>
+            <!--Content Block-->
+            <section class="content-wrapper">
+              <div class="content-container container">
+                <div class="heading-block">
+                  <h1>推荐商品</h1>
+                </div>
+                <div class="feature-block">
+                  <ul id="mix" class="product-grid">
+                       #if($!recommend) 
+	                      #foreach($!list in $!recommend)
+	                      <li>
+		                      <div class="pro-img"><img title="Freature Product" alt="Freature Product" src="../comImages/$!list.imgUrl" /></div>
+		                      <div class="pro-hover-block">
+		                        <h4 class="pro-name">$!list.introduce</h4>
+		                        <div class="link-block"> 
+		                        <a href="../commodity/particulars?commodityId=$!list.commodityId" class="quickproLink" title="$!list.name"></a></div>
+		                        <div class="pro-price">$!list.price元</div>
+		                      </div>
+		                     </li>
+                          #end
+					    #end 
+                  </ul>
+                </div>
+                
+                <div class="heading-block">
+                  <h1>最新商品</h1>
+                </div>
+                <div class="new-product-block">
+                 <input type = "hidden" id = "user" value = "$!buyer.buyerName"/>
+                  <ul class="product-grid">
+                     #if($!news) 
+                        #foreach($!list in $!news)
+	                    <li>
+	                      <div class="pro-img">
+	                        <img title="$!list.introduce" alt="Freature Product" src="../comImages/default_img.jpg" />
+	                      </div>
+	                      <div class="pro-content">
+	                        <p>$!list.name</p>
+	                      </div>
+	                      <div class="pro-price">$!list.price元</div>
+	                      <div class="pro-btn-block"> 
+	                            <a class="add-cart left" href="#" title="加入购物车" onclick = "shoppingCar($!list.id)">加入购物车</a> 
+	                            <a class="add-cart right" href="../pay/immediatelyPay?commodityId=$!list.id&buyNum=1" title="立即购买">立即购买</a> 
+	                      </div>
+	                      <div class="pro-link-block"> <span class="add-wishlist left"></span> <span class="add-compare right"></span>
+	                        <div class="clearfix"></div>
+	                      </div>
+	                    </li>
+	                    #end
+					 #end  
+                  </ul>
+                </div>
+              </div>
+            </section>
+    </div>        
+    
+    <script>
+	     function shoppingCar(commodityId)
+	     {
+	         var buyerName = $("#user").val();
+	    	 if($("#user").val() == ""||$("#user").val() == null)
+	    	 {
+	    		 alert("请先登录，点击右上角买家登录");
+	    	 }
+	    	 else 
+	    	 {
+	    		 $.ajax({
+	 	            type:'POST',
+	 	            url: "../ajax/shopCar",
+	 	            data:"commodityId="+commodityId+"&buyerName="+buyerName+"&num="+1,
+	 	            success:function(a){
+	 	 	            if(a == "success")
+	 	 	              alert("成功加入购物车");
+	 	 	            else
+	 	 	              alert("系统出现错误，请稍候再试");  
+	 	            }
+	    	     }) 
+	    	 }
+	     }
+
+	     function shopCar()
+	     {
+	    	 var buyerName = $("#user").val();
+	    	 if($("#user").val() == ""||$("#user").val() == null)
+	    	 {
+	    		 alert("请先登录，点击右上角买家登录");
+	    	 }
+	    	 else 
+	    	 {
+	    		 window.location.href="../pay/shopCar"
+	    	 }
+	     }
+
+	     function personal()
+		  {
+			  var buyerName = $("#user").val();
+		    	 if($("#user").val() == ""||$("#user").val() == null)
+		    	 {
+		    		 alert("请先登录");
+		    	 }
+		    	 else 
+		    	 {
+		    		 window.location.href="../personal/getPersonalList"
+		    	 }
+		  }
+    </script>
+     
+</body>
+</html>
